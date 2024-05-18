@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Williams | Trainer Profile</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #cebaba;
+            background-image: url('3.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Header styles */
+        .trainer-header {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Trainer info styles */
+        .trainer-info {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(236, 199, 130, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .trainer-info img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .trainer-info p {
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #555;
+        }
+
+        /* Additional styling */
+        .trainer-info h2 {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .trainer-info ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .trainer-info ul li {
+            margin-bottom: 8px;
+        }
+
+        .trainer-info p.description {
+            line-height: 1.6;
+        }
+
+        .trainer-info .btn-contact {
+            margin-top: 20px;
+            background-color: #27ae60;
+        }
+
+        .trainer-info .btn-contact:hover {
+            background-color: #2ecc71;
+        }
+
+        /* Dialog box styles */
+        .dialog-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dialog-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .dialog-box p {
+            margin-bottom: 10px;
+        }
+
+        .dialog-box .btn-confirm,
+        .dialog-box .btn-cancel {
+            padding: 8px 16px;
+            margin-right: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dialog-box .btn-confirm:hover,
+        .dialog-box .btn-cancel:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header class="trainer-header">
+        <h1>David Williams</h1>
+        <p>Body Builder Coach</p>
+    </header>
+    <div class="trainer-info">
+        <img src="assets/trainer-1.jpg" alt="David Williams">
+        <h2>About David</h2>
+        <p class="description">David Williams is a certified body builder coach with over 10 years of experience in transforming bodies and lives. He specializes in strength training, nutrition planning, and personalized fitness routines.</p>
+        <h2>Experience</h2>
+        <ul>
+            <li>Trained: 500+ clients</li>
+            <li>Awards: Best Fitness Trainer 2023, Muscle Mania</li>
+            <li>Featured in: Fitness Today Magazine, July 2023</li>
+        </ul>
+        <h2>Training Programs</h2>
+        <p class="description">David offers customized training programs tailored to individual goals, whether it's bulking up, cutting down, or overall fitness improvement. His programs focus on sustainable lifestyle changes and long-term health benefits.</p>
+        <button id="book-now-btn" class="btn btn__primary">Book Now</button>
+        <button class="btn btn-contact">Contact David</button>
+    </div>
+
+    <!-- Dialog box -->
+    <div class="dialog-overlay" id="dialog-overlay">
+        <div class="dialog-box">
+            <p>Are you sure you want to book David Williams?</p>
+            <button id="confirm-btn" class="btn-confirm">Confirm</button>
+            <button id="cancel-btn" class="btn-cancel">Cancel</button>
+        </div>
+    </div>
+
+    <!-- JavaScript for dialog box functionality -->
+    <script>
+        const bookNowBtn = document.getElementById('book-now-btn');
+        const dialogOverlay = document.getElementById('dialog-overlay');
+        const confirmBtn = document.getElementById('confirm-btn');
+        const cancelBtn = document.getElementById('cancel-btn');
+
+        bookNowBtn.addEventListener('click', () => {
+            dialogOverlay.style.display = 'flex';
+        });
+
+        confirmBtn.addEventListener('click', () => {
+            // Add logic to handle booking confirmation
+            alert('Booking confirmed!');
+            // You can redirect or perform other actions here
+        });
+
+        cancelBtn.addEventListener('click', () => {
+            dialogOverlay.style.display = 'none';
+        });
+        $(document).ready(function() {
+        $('#book-now-btn').on('click', function() {
+            // Prepare the data to send
+            var data = {
+                booking_id: 1, // Sample booking ID
+                trainer_id: 2, // Sample trainer ID (e.g., David)
+                user_id: 123, // Sample user ID
+                booking_date: '2024-05-10', // Sample booking date
+                booking_time: '09:00 AM' // Sample booking time
+            };
+
+            // Send an AJAX request to the PHP script
+            $.ajax({
+                type: 'POST',
+                url: 'booking.php',
+                data: data,
+                success: function(response) {
+                    // Handle the response from the server
+                    console.log(response);
+                    // You can add more logic here, such as showing a success message to the user
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', status, error);
+                    // Handle errors, such as displaying an error message to the user
+                }
+            });
+        });
+    }); 
+    </script>
+</body>
+</html>

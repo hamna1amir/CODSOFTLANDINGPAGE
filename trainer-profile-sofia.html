@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOFIA LOREAN | Trainer Profile</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('assets/gallery-4.jpg'); /* Updated background image */
+            background-size: cover;
+            background-position: center;
+        }
+        
+
+        /* Header styles */
+        .trainer-header {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Trainer info styles */
+        .trainer-info {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 201, 130, 0.9); /* Updated background color */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .trainer-info img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .trainer-info p {
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #555;
+        }
+
+        /* Additional styling */
+        .trainer-info h2 {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .trainer-info p.description {
+            line-height: 1.6;
+        }
+
+        .trainer-info .btn-contact {
+            margin-top: 20px;
+            background-color: #27ae60;
+        }
+
+        .trainer-info .btn-contact:hover {
+            background-color: #2ecc71;
+        }
+
+        /* Dialog overlay styles */
+        #dialog-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .dialog-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-confirm,
+        .btn-cancel {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-confirm:hover,
+        .btn-cancel:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header class="trainer-header">
+        <h1>SOFIA LOREAN</h1>
+        <p>Pilates Instructor</p>
+    </header>
+    <div class="trainer-info">
+        <img src="assets/trainer-4.jpg" alt="Sofia Lorean">
+        <h2>About Sofia</h2>
+        <p class="description">Sofia Lorean is a dedicated Pilates instructor with a passion for holistic wellness. Her approach blends mindful movement, core strength, and flexibility to create transformative experiences for her clients.</p>
+        <h2>Classes Offered</h2>
+        <p class="description">Sofia offers a range of Pilates classes, including mat Pilates, reformer sessions, and specialized workshops for different levels of experience. Her focus on alignment and mindful practice ensures a rewarding journey for every participant.</p>
+        <!--BOOK NOW-->
+        <form id="book-form" action="booking.php" method="post">
+            <input type="hidden" name="trainer_id" value="1"> <!-- Replace 1 with the actual trainer ID -->
+            <button type="submit" name="book_now" class="btn btn__primary">Book Now</button>
+        </form>
+        <button class="btn btn-contact">Contact Sofia</button>
+    </div>
+
+    <!-- Dialog overlay -->
+    <div id="dialog-overlay">
+        <div class="dialog-box">
+            <h3>Confirm Booking</h3>
+            <p>Are you sure you want to book a session with Sofia Lorean?</p>
+            <button id="confirm-btn" class="btn-confirm">Confirm</button>
+            <button id="cancel-btn" class="btn-cancel">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        const bookNowBtn = document.getElementById('book-now-btn');
+        const dialogOverlay = document.getElementById('dialog-overlay');
+        const confirmBtn = document.getElementById('confirm-btn');
+        const cancelBtn = document.getElementById('cancel-btn');
+
+        bookNowBtn.addEventListener('click', () => {
+            dialogOverlay.style.display = 'flex';
+        });
+
+        confirmBtn.addEventListener('click', () => {
+            // Add logic to handle booking confirmation
+            alert('Booking confirmed!');
+            dialogOverlay.style.display = 'none';
+            // You can redirect or perform other actions here
+        });
+
+        cancelBtn.addEventListener('click', () => {
+            dialogOverlay.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
